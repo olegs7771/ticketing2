@@ -1,0 +1,62 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false
+
+    # this part accountable for code sync in pod
+    # for every changing occured
+  artifacts:
+    - image: olegs777/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './auth/src/**/*.ts'
+            dest: .
+    - image: olegs777/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          # directory where file attempt to sync!
+          - src: './client/**/*.ts'
+            dest: .
+    - image: olegs777/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './tickets/src/**/*.ts'
+            dest: .
+    - image: olegs777/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './orders/src/**/*.ts'
+            dest: .
+    - image: olegs777/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './expiration/src/**/*.ts'
+            dest: .
+    - image: olegs777/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './payments/src/**/*.ts'
+            dest: .

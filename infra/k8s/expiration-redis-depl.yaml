@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expiration-redis-depl
+spec:
+  replicas: 1
+  # how deployment finds pods that its actualy creates
+  selector:
+    matchLabels:
+      app: expiration-redis
+  template:
+    metadata:
+      # what name apply to the pod
+      labels:
+        app: expiration-redis
+    spec:
+      containers:
+        - name: expiration-redis
+          image: redis
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: '1'
+            requests:
+              memory: 256Mi
+              cpu: '0.2'
+
+---
+# SERVICE CONNECTION FOR MONGO CONTAINER
+apiVersion: v1
+kind: Service
+metadata:
+  name: expiration-redis-srv
+spec:
+  # SAYS TO SERVICE TO WHICH PODS GOVERN ACCESS
+  selector:
+    app: expiration-redis
+  # LISTEN ON SET OF PORTS TO WHICH TO CONNECT
+  ports:
+    - name: db
+      protocol: TCP
+      port: 6379
+      targetPort: 6379

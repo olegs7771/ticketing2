@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expiration-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expiration
+  template:
+    metadata:
+      labels:
+        app: expiration
+    spec:
+      containers:
+        - name: expiration
+          image: olegs777/expiration
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: '1'
+            requests:
+              memory: 256Mi
+              cpu: '0.2'
+
+          # environment variables
+          env:
+            # URL
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+
+            # CLUSTER ID
+            - name: NATS_CLUSTER_ID
+              value: ticketing
+
+            # redis local database
+            - name: REDIS_HOST
+              value: expiration-redis-srv
+
+            # CLIENT ID we will use random generated pods id
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+# Expiration service  not uses Service ports to connect to any other service directly hence we not setting up any ports

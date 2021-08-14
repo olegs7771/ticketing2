@@ -1,0 +1,7 @@
+export const stripe = {
+  charges: {
+    // calling on mockResolvedValue 
+    // because we want use await and expecting some resolve
+    create: jest.fn().mockResolvedValue({})
+  },
+};
