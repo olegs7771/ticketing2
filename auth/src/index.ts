@@ -3,6 +3,8 @@ import { app } from './app';
 
 //MONGO CONNECTION
 const start = async () => {
+  console.log('Strating up...!!!!');
+
   //predefine process.env.JWT_KEY for typescipt
   if (!process.env.JWT_KEY) {
     throw new Error('JWT must be defined');
