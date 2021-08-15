@@ -5,7 +5,7 @@ var express_validator_1 = require("express-validator");
 var request_validation_error_1 = require("../errors/request-validation-error");
 var validateRequest = function (req, res, next) {
     var errors = express_validator_1.validationResult(req);
-    console.log('errors', errors);
+    // console.log('errors in validateRequest', errors);
     if (!errors.isEmpty()) {
         throw new request_validation_error_1.RequestValidationError(errors.array());
     }
