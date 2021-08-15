@@ -14,8 +14,7 @@ const start = async () => {
   }
 
   try {
-    // await mongoose.connect(process.env.MONGO_URI_AUTH, {
-    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
+    await mongoose.connect(process.env.MONGO_URI_AUTH, {
       useCreateIndex: true,
       useUnifiedTopology: true,
       useNewUrlParser: true,
