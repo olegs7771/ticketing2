@@ -41,7 +41,6 @@ const start = async () => {
     process.on('SIGTERM', () => natsWrapper.client.close());
     new OrderCreatedListener(natsWrapper.client).listen();
     new OrderCancelledListener(natsWrapper.client).listen();
-
   } catch (error) {
     console.log('error to connect to NATS in payments');
   }
