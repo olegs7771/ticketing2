@@ -8,6 +8,8 @@ import { PaymentCreatedListener } from './events/listeners/payment-created-liste
 
 //MONGO CONNECTION
 const start = async () => {
+  console.log('Starting...');
+
   //predefine process.env.JWT_KEY for typescipt
   // show TS that we aware if variable undefined
 
