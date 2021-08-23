@@ -6,10 +6,10 @@ it('returns a 201 on successfull signup', async () => {
   return request(app)
     .post('/api/users/signup')
     .send({
-      email: 'test@test.com',
-      password: '123456',
+      password: '12345678',
+      email: 'test@gmail.com',
     })
-    .expect(400);
+    .expect(201);
 });
 
 //Test invalid email
@@ -77,3 +77,4 @@ it('sets a cookie after successful signup', async () => {
     .expect(201);
   expect(response.get('Set-Cookie')).toBeDefined();
 });
+////

@@ -4,7 +4,7 @@ import { body } from 'express-validator';
 import { Password } from '../services/password';
 import { User } from '../models/user';
 
-import { validateRequest ,BadRequestError} from '@olegs777tickets/common';
+import { validateRequest, BadRequestError } from '@olegs777tickets/common';
 
 import jwt from 'jsonwebtoken';
 
@@ -33,6 +33,7 @@ router.post(
     const userJwt = jwt.sign(
       { id: user.id, email: user.email },
       process.env.JWT_KEY!,
+      // 'asdf',
     );
     //Store it on session object
     req.session = {

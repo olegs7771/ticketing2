@@ -32,6 +32,7 @@ router.post(
     const userJwt = jwt.sign(
       { id: newUser.id, email: newUser.email },
       process.env.JWT_KEY!,
+      // 'asdf',
     );
     //Store it on session object
     req.session = {
@@ -43,3 +44,4 @@ router.post(
 );
 
 export { router as signupRouter };
+//

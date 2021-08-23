@@ -7,7 +7,7 @@ const start = async () => {
 
   //predefine process.env.JWT_KEY for typescipt
   if (!process.env.JWT_KEY) {
-    throw new Error('JWT must be defined');
+    throw new Error('JWT_KEY must be defined');
   }
   if (!process.env.MONGO_URI_AUTH) {
     throw new Error('MONGO_URI must be  defined');
@@ -29,3 +29,4 @@ const start = async () => {
 };
 
 start();
+////
