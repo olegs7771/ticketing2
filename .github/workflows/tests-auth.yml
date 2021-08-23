@@ -1,8 +1,10 @@
 name: tests-auth
 
 on:
-  pull_request
-  
+  pull_request:
+    paths:
+      - 'auth/**'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,5 +13,3 @@ jobs:
       - run: cd auth && npm install && npm run test:ci
         env:
           JWT_KEY: asdf
-  
-
