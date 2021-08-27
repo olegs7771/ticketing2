@@ -12,5 +12,6 @@ jobs:
       - uses: actions/checkout/@v2
       - run: cd payments && npm install && npm run test:ci
         env:
-          JWT_KEY: asdf
-          STRIPE_KEY: sk_test_51JGAyWLbv3cZdQGnWqbMz9Y3opWyckaSBXOBCNxdVZbv8qTfNigaRs6f4E7FZl9qY4GOPQojYui2Y5x3p2OIUYc0000mKpV8rO
+          JWT_KEY: ${{ secrets.JWT_KEY }}
+          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
+
