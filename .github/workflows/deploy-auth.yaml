@@ -29,5 +29,10 @@ jobs:
       # Restart cluster in DigOcean to tell use newly pushed images
       # 1) Install doctl automaticly
       - uses: digitalocean/action-doctl@v2
+        with:
+         token: ${{secret.DIGITAL_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save ticketing
+      # 2) Update cluster
+      - run: kubectl rollout restart deployment auth-depl
 
      
