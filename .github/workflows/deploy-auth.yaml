@@ -26,5 +26,8 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push olegs777/auth
+      # Restart cluster in DigOcean to tell use newly pushed images
+      # 1) Install doctl automaticly
+      - uses: digitalocean/action-doctl@v2
 
      
