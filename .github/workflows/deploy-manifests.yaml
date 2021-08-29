@@ -6,7 +6,7 @@ name: deploy-manifests
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: 
+    branches:
       - master
     paths:
       - 'infra/**'
@@ -27,8 +27,9 @@ jobs:
       # 1) Install doctl automaticly
       - uses: digitalocean/action-doctl@v2
         with:
-         token: ${{secret.DIGITAL_ACCESS_TOKEN }}
+          token: ${{secret.DIGITAL_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save ticketing
       # 2) Update cluster
       - run: kubectl rollout restart deployment auth-depl
       - run: kubectl apply -f infra/k8s
+# ///
