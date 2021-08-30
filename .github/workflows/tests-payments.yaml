@@ -2,8 +2,8 @@ name: tests-payments
 
 on:
   pull_request:
-  paths:
-    - 'payments/**'
+    paths:
+      - 'payments/**'
 
 jobs:
   build:
@@ -14,4 +14,3 @@ jobs:
         env:
           JWT_KEY: ${{ secrets.JWT_KEY }}
           STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
-
