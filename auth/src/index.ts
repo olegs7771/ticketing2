@@ -3,7 +3,7 @@ import { app } from './app';
 
 //MONGO CONNECTION
 const start = async () => {
-  console.log('Testing building new Image and pushing to DockerHub!!!');
+  console.log('Testing building new Image and pushing to DockerHub');
 
   //predefine process.env.JWT_KEY for typescipt
   if (!process.env.JWT_KEY) {
