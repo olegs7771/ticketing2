@@ -35,4 +35,4 @@ jobs:
       - run: doctl kubernetes cluster kubeconfig save ticketing
       # 2) Update cluster
       - run: kubectl rollout restart deployment auth-depl
-# ////
+# ////////
