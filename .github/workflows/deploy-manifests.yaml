@@ -27,7 +27,7 @@ jobs:
       # 1) Install doctl automaticly
       - uses: digitalocean/action-doctl@v2
         with:
-          token: ${{secret.DIGITALOCEAN_ACCESS_TOKEN }}
+          token: ${{ secret.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save ticketing
       # 2) Update cluster
       - run: kubectl rollout restart deployment auth-depl
