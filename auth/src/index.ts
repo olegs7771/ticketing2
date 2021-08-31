@@ -3,10 +3,11 @@ import { app } from './app';
 
 //MONGO CONNECTION
 const start = async () => {
-  console.log('Testing work branch auth service!!!!');
+  console.log('Testing work branch auth service!!!!???');
 
   //predefine process.env.JWT_KEY for typescipt
   if (!process.env.JWT_KEY) {
+    s;
     throw new Error('JWT_KEY must be defined');
   }
   if (!process.env.MONGO_URI_AUTH) {
